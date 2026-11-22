@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rastreador</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    html, body { height: 100%; margin: 0; }
+    #mapa { height: 100%; }
+  </style>
+</head>
+<body>
+  <div id="mapa"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const USUARIO = "jay";
+
+    // Cria o mapa, centralizado em Recife
+    const mapa = L.map("mapa").setView([-8.05, -34.88], 16);
+
+    // Camada com as imagens do OpenStreetMap
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap"
+    }).addTo(mapa);
+
+    let marcador = null;
+
+    async function atualizar() {
+      try {
+        const resposta = await fetch(`/posicao/${USUARIO}`);
+        if (!resposta.ok) return;
+
+        const dados = await resposta.json();
+        const posicao = [dados.latitude, dados.longitude];
+
+        if (marcador === null) {
+          marcador = L.marker(posicao).addTo(mapa);
+        } else {
+          marcador.setLatLng(posicao);
+        }
+        mapa.panTo(posicao);
+      } catch (erro) {
+        console.log("Erro ao buscar posição:", erro);
+      }
+    }
+
+    atualizar();
+    setInterval(atualizar, 2000);
+  </script>
+</body>
+</html>

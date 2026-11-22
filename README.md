@@ -2,6 +2,8 @@
 
 Projeto de estudo: um rastreador de localização em tempo real, com API em Python e um mapa que mostra a posição se movendo. A ideia é compartilhar a localização entre pessoas que concordam em se ver, usando apenas ferramentas gratuitas e rodando no meu próprio servidor.
 
+![Mapa com o marcador em movimento](docs/mapa.png)
+
 > **Status:** em desenvolvimento. A Fase 1 (API, simulador e mapa) está pronta. Por enquanto o projeto usa apenas **dados simulados**, e a API ainda **não tem autenticação**. Não use com localização real nem exponha o servidor à internet.
 
 ## O que já funciona

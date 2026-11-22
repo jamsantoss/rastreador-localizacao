@@ -80,4 +80,6 @@ O projeto foi pensado para uso entre pessoas que consentem em compartilhar a loc
 ## Autor
 
 Jamilson Santos
-[GitHub](https://github.com/jamsantoss) · [LinkedIn](https://www.linkedin.com/in/jamilson-santos-335a43155)
+
+[GitHub](https://github.com/jamsantoss) · 
+[LinkedIn](https://www.linkedin.com/in/jamilson-santos-335a43155)
